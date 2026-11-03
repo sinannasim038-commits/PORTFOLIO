@@ -1,0 +1,1595 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f1e9">
+  <meta name="description" content="Nasim Sha is pursuing an integrated B.Tech in Civil Engineering, Artificial Intelligence and Machine Learning at Lovely Professional University.">
+  <title>Nasim Sha &mdash; AI &amp; ML Student</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f3f1e9;
+      --ink: #17241d;
+      --muted: #667068;
+      --green: #24543b;
+      --lime: #d7ed79;
+      --orange: #e85d3f;
+      --line: rgba(23, 36, 29, .17);
+      --mono: "DM Mono", monospace;
+      --sans: "Manrope", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 82px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+    a { color: inherit; }
+    button { font: inherit; }
+    .shell { width: min(1180px, calc(100% - 64px)); margin-inline: auto; }
+    .mono { font-family: var(--mono); font-size: 11px; letter-spacing: 0; text-transform: uppercase; }
+
+    .site-header { position: sticky; z-index: 10; top: 0; background: rgba(243, 241, 233, .94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 15px; letter-spacing: 0; }
+    .brand-mark { display: grid; width: 31px; aspect-ratio: 1; place-items: center; background: var(--orange); color: white; font-family: var(--mono); font-size: 12px; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 12px; font-weight: 700; transition: color .2s ease; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--orange); }
+    .nav-links .nav-cta { padding: 11px 16px; border: 1px solid var(--ink); color: var(--ink); }
+    .menu-toggle { display: none; width: 42px; height: 42px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; }
+
+    .hero { display: grid; grid-template-columns: 1.08fr .92fr; min-height: 650px; align-items: center; gap: 44px; padding-block: 70px 82px; }
+    .hero-copy { position: relative; z-index: 1; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--green); }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 4px rgba(232, 93, 63, .14); }
+    h1 { max-width: 740px; margin: 22px 0 16px; font-size: clamp(48px, 6.2vw, 86px); font-weight: 800; line-height: 1.02; letter-spacing: -0.5px; }
+    h1 span { color: var(--green); }
+    .hero-subtitle { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 20px; line-height: 1.6; }
+    .hero-intro { max-width: 580px; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.85; }
+    .hero-intro strong { color: var(--ink); font-weight: 700; }
+    .hero-actions { display: flex; align-items: center; gap: 12px; margin-top: 32px; }
+    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 16px; padding: 0 18px; border: 1px solid var(--ink); text-decoration: none; font-size: 12px; font-weight: 800; transition: transform .2s ease, background .2s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--green); border-color: var(--green); color: white; }
+    .button-secondary { background: transparent; }
+    .button svg { width: 15px; height: 15px; }
+    .hero-note { display: flex; align-items: center; gap: 10px; margin-top: 42px; color: var(--muted); }
+    .hero-note::before { width: 34px; height: 1px; content: ""; background: var(--orange); }
+
+    .hero-visual { position: relative; min-height: 465px; overflow: hidden; background: var(--green); }
+    .hero-visual img { position: absolute; width: 100%; height: 100%; object-fit: cover; object-position: center 18%; }
+    .hero-visual::after { position: absolute; inset: 0; content: ""; background: linear-gradient(180deg, rgba(10, 22, 16, 0) 50%, rgba(10, 22, 16, .75) 100%); }
+    .visual-index { position: absolute; z-index: 1; top: 18px; left: 18px; padding: 9px 11px; background: var(--lime); color: var(--ink); }
+    .visual-caption { position: absolute; z-index: 1; right: 24px; bottom: 24px; left: 24px; display: flex; justify-content: space-between; align-items: end; gap: 16px; color: white; }
+    .visual-caption strong { display: block; max-width: 260px; font-size: 23px; line-height: 1.15; letter-spacing: 0; }
+    .visual-caption span { color: rgba(255,255,255,.75); }
+    .visual-stamp { display: grid; width: 60px; aspect-ratio: 1; flex: 0 0 auto; place-items: center; border: 1px solid rgba(255,255,255,.7); border-radius: 50%; color: white; font-size: 24px; transform: rotate(-12deg); }
+    .visual-side-label { position: absolute; z-index: 1; top: 50%; right: 12px; color: rgba(255,255,255,.82); writing-mode: vertical-rl; transform: translateY(-50%); }
+
+    .ticker { overflow: hidden; border-block: 1px solid var(--line); background: var(--lime); }
+    .ticker-inner { min-height: 54px; display: flex; align-items: center; justify-content: space-between; gap: 18px; color: var(--ink); }
+    .ticker-item { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+    .ticker-item::before { content: "\2733"; color: var(--orange); font-size: 18px; }
+
+    .section { padding-block: 112px; }
+    .section-heading { display: grid; grid-template-columns: 1fr 2fr; align-items: start; gap: 36px; margin-bottom: 52px; }
+    .section-kicker { display: flex; align-items: center; gap: 10px; margin-top: 12px; color: var(--green); }
+    .section-kicker::before { width: 20px; height: 1px; content: ""; background: var(--orange); }
+    h2 { margin: 0; font-size: clamp(36px, 5vw, 64px); line-height: 1.04; letter-spacing: 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .about-copy { max-width: 520px; color: var(--muted); font-size: 16px; line-height: 1.9; }
+    .about-copy p { margin: 0 0 18px; }
+    .about-copy strong { color: var(--ink); }
+    .fact-list { border-top: 1px solid var(--line); }
+    .fact { display: grid; grid-template-columns: 130px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .fact-label { color: var(--muted); }
+    .fact-value { font-size: 13px; font-weight: 700; line-height: 1.6; }
+
+    .focus-section { background: var(--ink); color: var(--paper); }
+    .focus-section .section-kicker { color: var(--lime); }
+    .focus-section .section-kicker::before { background: var(--orange); }
+    .focus-section .section-heading { margin-bottom: 48px; }
+    .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(243,241,233,.22); }
+    .focus-item { min-height: 254px; padding: 26px 26px 24px 0; border-right: 1px solid rgba(243,241,233,.22); }
+    .focus-item + .focus-item { padding-left: 26px; }
+    .focus-item:last-child { border-right: 0; }
+    .focus-number { color: var(--lime); }
+    .focus-item h3 { margin: 44px 0 12px; font-size: 22px; letter-spacing: 0; }
+    .focus-item p { max-width: 300px; margin: 0; color: rgba(243,241,233,.66); font-size: 13px; line-height: 1.8; }
+
+    .journey { display: grid; grid-template-columns: 1fr 2fr; gap: 36px; }
+    .journey h2 { max-width: 300px; }
+    .journey-detail { border-top: 1px solid var(--line); }
+    .journey-row { display: grid; grid-template-columns: 145px 1fr; gap: 24px; padding: 23px 0; border-bottom: 1px solid var(--line); }
+    .journey-year { color: var(--orange); }
+    .journey-row h3 { margin: 0 0 7px; font-size: 17px; letter-spacing: 0; }
+    .journey-row p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .skill-card { background: #ffffff; border: 1px solid var(--line); padding: 32px; display: flex; flex-direction: column; justify-content: space-between; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+    .skill-card:hover { transform: translateY(-3px); border-color: var(--ink); box-shadow: 0 14px 28px rgba(23, 36, 29, .06); }
+    .skill-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .skill-card-badge { color: var(--orange); }
+    .skill-card h3 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: 0; }
+    .skill-card-desc { margin: 10px 0 20px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+    .skill-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--paper); border: 1px solid var(--line); font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--ink); }
+    .skill-pill::before { content: "\2022"; color: var(--orange); font-size: 14px; line-height: 0; }
+    .contact-links-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; position: relative; z-index: 1; }
+    .contact-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 13px 18px; background: var(--paper); border: 1px solid var(--paper); color: var(--ink); text-decoration: none; font-size: 12px; font-weight: 800; font-family: var(--mono); text-transform: uppercase; letter-spacing: .4px; transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease; }
+    .contact-btn:hover { transform: translateY(-2px); background: var(--ink); border-color: var(--ink); color: var(--paper); }
+    .contact-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+    .contact-btn.btn-whatsapp:hover { background: #128c7e; border-color: #128c7e; color: #fff; }
+    .contact-btn.btn-github:hover { background: #181717; border-color: #181717; color: #fff; }
+    .contact-btn.btn-linkedin:hover { background: #0077b5; border-color: #0077b5; color: #fff; }
+    .contact-btn.btn-email:hover { background: #c5221f; border-color: #c5221f; color: #fff; }
+
+    /* Roadmap & Certifications Section Styles */
+    .roadmap-section {
+      background: #080f1a;
+      color: #f1f5f9;
+      position: relative;
+      overflow: hidden;
+      padding-block: 104px;
+      border-block: 1px solid #1e293b;
+    }
+    .roadmap-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+    .roadmap-section .section-kicker {
+      color: #38bdf8;
+    }
+    .roadmap-section .section-kicker::before {
+      background: #38bdf8;
+    }
+    .roadmap-section h2 {
+      color: #ffffff;
+      font-size: clamp(32px, 4.2vw, 56px);
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-top: 14px;
+    }
+    .roadmap-intro-banner {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 28px 0 34px;
+      padding: 22px 26px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-left: 4px solid #38bdf8;
+      border-radius: 2px;
+    }
+    .roadmap-intro-banner p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.85;
+      color: #cbd5e1;
+      font-style: italic;
+    }
+    .roadmap-legend-wrap {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+    .roadmap-legend {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      padding: 12px 20px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid #1e293b;
+    }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: #94a3b8;
+    }
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .legend-dot.is-active {
+      background: #38bdf8;
+      box-shadow: 0 0 8px #38bdf8;
+    }
+    .legend-dot.is-planned {
+      background: #64748b;
+    }
+    .legend-dot.is-milestone {
+      background: #f59e0b;
+      box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+    }
+    .roadmap-category-badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .roadmap-type-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      border-radius: 2px;
+    }
+    .tag-skill {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+    }
+    .tag-cert {
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      color: #c084fc;
+    }
+    .tag-training {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fbbf24;
+    }
+    .tag-internship {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #34d399;
+    }
+
+    /* Timeline Grid */
+    .timeline-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    .term-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      padding: 30px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .term-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), 0 0 20px rgba(56, 189, 248, 0.08);
+    }
+    .term-card.is-current {
+      border-color: rgba(56, 189, 248, 0.5);
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(12, 33, 62, 0.4) 100%);
+    }
+    .term-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #1e293b;
+      margin-bottom: 18px;
+    }
+    .term-tag-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .term-number {
+      font-weight: 700;
+      font-size: 12px;
+      color: #38bdf8;
+    }
+    .term-stage {
+      color: #94a3b8;
+      font-size: 11px;
+    }
+    .term-meta-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .term-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      border-radius: 2px;
+    }
+    .term-status-badge.badge-current {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+    }
+    .term-status-badge.badge-planned {
+      background: rgba(148, 163, 184, 0.1);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      color: #94a3b8;
+    }
+    .term-status-badge.badge-milestone {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
+    }
+    .term-hero {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .term-icon-box {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid #334155;
+      color: #38bdf8;
+    }
+    .term-icon-box svg {
+      width: 22px;
+      height: 22px;
+    }
+    .term-card h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+    .term-focus-subtitle {
+      color: #94a3b8;
+      font-size: 12px;
+    }
+    .term-points {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .term-points li {
+      position: relative;
+      padding-left: 18px;
+      color: #cbd5e1;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .term-points li::before {
+      content: "\25B8";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #38bdf8;
+    }
+    .term-target-credential {
+      padding: 12px 14px;
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px dashed rgba(56, 189, 248, 0.3);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .credential-icon {
+      color: #38bdf8;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .credential-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .credential-label {
+      font-size: 10px;
+      color: #94a3b8;
+      font-weight: 600;
+      letter-spacing: .4px;
+    }
+    .credential-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #e2e8f0;
+      line-height: 1.4;
+    }
+    .term-target-companies {
+      padding: 14px 16px;
+      background: rgba(30, 41, 59, 0.45);
+      border: 1px dashed rgba(56, 189, 248, 0.28);
+      border-radius: 2px;
+      margin-top: auto;
+    }
+    .target-companies-label {
+      display: block;
+      font-size: 10px;
+      color: #94a3b8;
+      font-weight: 700;
+      letter-spacing: .5px;
+      margin-bottom: 10px;
+    }
+    .target-companies-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .company-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      color: #f1f5f9;
+      font-size: 11px;
+      font-weight: 600;
+      font-family: var(--mono);
+      letter-spacing: .2px;
+      transition: border-color .2s ease, transform .2s ease, background .2s ease;
+    }
+    .company-pill:hover {
+      border-color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      transform: translateY(-1px);
+    }
+    .companies-disclaimer {
+      display: block;
+      margin-top: 8px;
+      font-size: 10px;
+      color: #64748b;
+      font-style: italic;
+    }
+
+    /* Career Destination Component */
+    .career-destination-card {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(135deg, #0b1528 0%, #0e1e38 100%);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 44px;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+    }
+    .career-destination-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .destination-kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #38bdf8;
+      margin-bottom: 12px;
+    }
+    .destination-title {
+      font-size: clamp(26px, 3.8vw, 42px);
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 16px;
+      letter-spacing: -0.5px;
+    }
+    .destination-summary {
+      max-width: 860px;
+      font-size: 15px;
+      line-height: 1.85;
+      color: #cbd5e1;
+      margin: 0 0 32px;
+    }
+    .progression-chain-wrap {
+      border-block: 1px solid rgba(56, 189, 248, 0.2);
+      padding-block: 24px;
+      margin-bottom: 32px;
+    }
+    .formula-tag {
+      color: #94a3b8;
+      font-size: 11px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .progression-chain {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 10px;
+    }
+    .progression-node {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 13px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #f8fafc;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--mono);
+      letter-spacing: .3px;
+      transition: border-color .2s ease, transform .2s ease;
+    }
+    .progression-node:hover {
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+    }
+    .progression-node.is-goal {
+      background: rgba(56, 189, 248, 0.16);
+      border-color: #38bdf8;
+      color: #38bdf8;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
+    .progression-arrow {
+      color: #38bdf8;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .pillar-item {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid #1e293b;
+      padding: 22px;
+    }
+    .pillar-num {
+      color: #38bdf8;
+      font-size: 11px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .pillar-item h4 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .pillar-item p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #94a3b8;
+    }
+        /* Premium Let's Connect Section Styles */
+    .connect-section {
+      background: #060b13;
+      color: #f1f5f9;
+      position: relative;
+      overflow: hidden;
+      padding-block: 104px;
+      border-top: 1px solid #1e293b;
+    }
+    .connect-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+    .connect-header {
+      margin-bottom: 36px;
+    }
+    .connect-section .section-kicker {
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .connect-section .section-kicker::before {
+      width: 24px;
+      height: 1px;
+      content: "";
+      background: #38bdf8;
+    }
+    .connect-section h2 {
+      color: #ffffff;
+      font-size: clamp(38px, 5.2vw, 68px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin: 16px 0 18px;
+    }
+    .connect-quote-banner {
+      max-width: 820px;
+      padding: 20px 24px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-left: 3px solid #38bdf8;
+      backdrop-filter: blur(12px);
+      margin-bottom: 36px;
+    }
+    .connect-quote-banner p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #cbd5e1;
+      font-style: italic;
+    }
+    .connect-profile-card {
+      position: relative;
+      z-index: 1;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      backdrop-filter: blur(14px);
+      padding: 32px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    }
+    .connect-profile-info h3 {
+      margin: 0 0 6px;
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.3px;
+    }
+    .connect-degree {
+      color: #38bdf8;
+      font-size: 13px;
+      font-weight: 600;
+      margin: 0 0 16px;
+      display: block;
+    }
+    .connect-focus-bar {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .connect-focus-label {
+      font-size: 10px;
+      color: #94a3b8;
+      letter-spacing: 0.5px;
+    }
+    .connect-focus-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .connect-focus-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      font-size: 11px;
+      font-family: var(--mono);
+      color: #e2e8f0;
+    }
+    .connect-identity-pill {
+      flex-shrink: 0;
+      padding: 14px 20px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      text-align: right;
+    }
+    .identity-label {
+      font-size: 9px;
+      color: #94a3b8;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .identity-formula {
+      font-size: 12px;
+      font-weight: 700;
+      color: #38bdf8;
+      font-family: var(--mono);
+    }
+    .profile-cards-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .profile-card {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.14);
+      backdrop-filter: blur(12px);
+      padding: 30px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+    .profile-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 24px rgba(56, 189, 248, 0.12);
+      background: rgba(15, 23, 42, 0.9);
+    }
+    .profile-card:hover::after {
+      opacity: 1;
+    }
+    .profile-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .card-num {
+      font-size: 11px;
+      color: #38bdf8;
+      font-weight: 700;
+    }
+    .card-icon-wrap {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      transition: transform .25s ease, color .25s ease, background .25s ease, border-color .25s ease;
+    }
+    .profile-card:hover .card-icon-wrap {
+      transform: scale(1.08);
+      color: #ffffff;
+      border-color: #38bdf8;
+      background: #0284c7;
+    }
+    .card-icon-wrap svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+    .profile-card h4 {
+      margin: 0 0 4px;
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .card-subtitle {
+      font-size: 11px;
+      color: #94a3b8;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin: 0 0 22px;
+    }
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 11px 14px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: #f1f5f9;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
+      margin-top: auto;
+    }
+    .profile-card:hover .card-btn {
+      background: #38bdf8;
+      border-color: #38bdf8;
+      color: #04101e;
+    }
+    .card-btn-arrow {
+      transition: transform .2s ease;
+    }
+    .profile-card:hover .card-btn-arrow {
+      transform: translateX(4px);
+    }
+    .connect-final-cta {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 58, 138, 0.35) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      padding: 34px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    }
+    .final-cta-text h3 {
+      margin: 0 0 6px;
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .final-cta-text p {
+      margin: 0;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    .final-cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 28px;
+      background: #38bdf8;
+      border: 1px solid #38bdf8;
+      color: #04101e;
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      white-space: nowrap;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+    .final-cta-button:hover {
+      transform: translateY(-2px);
+      background: #ffffff;
+      border-color: #ffffff;
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.35);
+    }
+
+
+    footer { border-top: 1px solid var(--line); }
+    .footer-inner { min-height: 76px; display: flex; justify-content: space-between; align-items: center; gap: 20px; color: var(--muted); }
+    .footer-inner strong { color: var(--ink); }
+    .footer-links { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .footer-links a { text-decoration: none; color: var(--muted); font-size: 11px; font-weight: 700; transition: color .2s ease; }
+    .footer-links a:hover { color: var(--orange); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    :focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 40px, 560px); }
+      .nav { min-height: 64px; }
+      .menu-toggle { display: grid; place-items: center; }
+      .nav-links { position: absolute; top: 63px; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 20px 18px; background: var(--paper); border-bottom: 1px solid var(--line); }
+      .nav-links.is-open { display: flex; flex-direction: column; }
+      .nav-links a { padding: 13px 0; }
+      .nav-links .nav-cta { align-self: start; margin-top: 6px; padding: 11px 14px; }
+      .hero { min-height: auto; grid-template-columns: 1fr; gap: 36px; padding-block: 64px 52px; }
+      h1 { font-size: clamp(56px, 15vw, 86px); }
+      .hero-visual { min-height: min(112vw, 440px); }
+      .ticker-inner { justify-content: flex-start; overflow: auto; scrollbar-width: none; }
+      .ticker-item { padding-block: 4px; }
+      .section { padding-block: 78px; }
+      .section-heading { grid-template-columns: 1fr; gap: 18px; margin-bottom: 34px; }
+      .about-grid, .journey, .skills-grid { grid-template-columns: 1fr; gap: 24px; }
+      .focus-grid { grid-template-columns: 1fr; }
+      .focus-item, .focus-item + .focus-item { min-height: 0; padding: 24px 0; border-right: 0; border-bottom: 1px solid rgba(243,241,233,.22); }
+      .focus-item h3 { margin-top: 24px; }
+      .focus-item:last-child { border-bottom: 0; }
+      .journey-row { grid-template-columns: 98px 1fr; gap: 14px; }
+      .profile-cards-grid { grid-template-columns: 1fr; }
+      .connect-profile-card { flex-direction: column; align-items: flex-start; padding: 24px 18px; }
+      .connect-identity-pill { text-align: left; }
+      .connect-final-cta { flex-direction: column; align-items: flex-start; padding: 26px 20px; }
+      .final-cta-button { width: 100%; justify-content: center; }
+      .timeline-grid { grid-template-columns: 1fr; }
+      .career-destination-card { padding: 28px 20px; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .synergy-pills { gap: 8px; }
+      .footer-inner { min-height: 82px; align-items: flex-start; justify-content: center; flex-direction: column; gap: 7px; padding-block: 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Nasim Sha, home"><span class="brand-mark">NS</span><span>Nasim Sha</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#journey">Education</a>
+        <a href="article.html">Article</a>
+        <a class="nav-cta" href="#contact">Say hello <span aria-hidden="true">&nearr;</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow mono"><span class="status-dot" aria-hidden="true"></span> CIVIL ENGINEERING &bull; AI &amp; MACHINE LEARNING</div>
+        <h1>Engineering the<br>Future <span>with AI.</span></h1>
+        <div class="hero-subtitle">Civil Engineering &times; Artificial Intelligence &times; Data &times; Construction Technology</div>
+        <p class="hero-intro">&ldquo;I&rsquo;m <strong>Nasim Sha</strong>, a B.Tech Integrated Civil Engineering student specializing in Artificial Intelligence &amp; Machine Learning at <strong>Lovely Professional University (LPU)</strong>, focused on building intelligent, data-driven solutions for the future of construction and infrastructure.&rdquo;</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#roadmap">Explore My Roadmap <span aria-hidden="true">&rarr;</span></a>
+          <a class="button button-secondary" href="#contact">Let&rsquo;s Connect <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <div class="hero-note mono">Building skills today for smarter infrastructure tomorrow.</div>
+      </div>
+      <div class="hero-visual" aria-label="Portrait of Nasim Sha">
+        <img src="profile.jpg" alt="Portrait of Nasim Sha" fetchpriority="high">
+        <span class="visual-index mono">01 / Profile</span>
+        <span class="visual-side-label mono">Ideas into intelligence</span>
+        <div class="visual-caption">
+          <div><span class="mono">Construction Tech &middot; AI/ML</span><strong>Nasim Sha<br><span style="font-size: 16px; font-weight: 600; color: rgba(255,255,255,.85);">Civil Eng &times; AI &middot; LPU</span></strong></div>
+          <span class="visual-stamp" aria-hidden="true">&nearr;</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-label="Areas of interest">
+      <div class="ticker-inner shell mono">
+        <span class="ticker-item">Artificial intelligence</span>
+        <span class="ticker-item">Machine learning</span>
+        <span class="ticker-item">Curiosity first</span>
+        <span class="ticker-item">Always learning</span>
+      </div>
+    </div>
+
+    <section class="section shell" id="about">
+      <div class="section-heading reveal">
+        <div class="section-kicker mono">01 / The person</div>
+        <h2>Learning how<br>intelligence works.</h2>
+      </div>
+      <div class="about-grid reveal">
+        <div class="about-copy">
+          <p>I'm drawn to the way data, thoughtful engineering, and human ideas come together. Right now, I'm building my foundations and looking for the questions that make me want to learn more.</p>
+          <div style="margin-top: 24px;">
+            <a class="button button-secondary" href="article.html" style="border-color: var(--green); color: var(--green);">Read My Story: Why Civil &times; AI <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+        <div class="fact-list" aria-label="A few details">
+          <div class="fact"><span class="fact-label mono">Currently</span><span class="fact-value">Integrated B.Tech student</span></div>
+          <div class="fact"><span class="fact-label mono">Studying</span><span class="fact-value">Civil Engineering, AI &amp; Machine Learning</span></div>
+          <div class="fact"><span class="fact-label mono">University</span><span class="fact-value">Lovely Professional University (LPU)</span></div>
+          <div class="fact"><span class="fact-label mono">Mindset</span><span class="fact-value">Stay curious. Keep building.</span></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="roadmap-section" id="roadmap">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div class="section-kicker mono">02 &middot; Certifications &amp; Professional Skill Roadmap</div>
+          <h2>Building the Future of Construction<br><span style="color: #38bdf8;">with Civil Engineering, AI &amp; Data.</span></h2>
+        </div>
+
+        <div class="roadmap-intro-banner reveal">
+          <p>&ldquo;Combining Civil Engineering with Artificial Intelligence, Machine Learning, BIM, Data Analytics and Construction Technology to develop intelligent, data-driven solutions for the future of the AEC industry.&rdquo;</p>
+        </div>
+
+        <div class="roadmap-legend-wrap reveal">
+          <div class="roadmap-legend" aria-label="Roadmap status guide">
+            <span class="legend-item mono"><span class="legend-dot is-active"></span> In Progress (Academic Foundation)</span>
+            <span class="legend-item mono"><span class="legend-dot is-planned"></span> Planned / Upcoming</span>
+            <span class="legend-item mono"><span class="legend-dot is-milestone"></span> Target Milestone / Capstone</span>
+          </div>
+          <div class="roadmap-category-badges" aria-label="Category tags guide">
+            <span class="roadmap-type-tag tag-skill">Skill</span>
+            <span class="roadmap-type-tag tag-cert">Certification</span>
+            <span class="roadmap-type-tag tag-training">Training</span>
+            <span class="roadmap-type-tag tag-internship">Internship</span>
+          </div>
+        </div>
+
+        <div class="timeline-grid reveal">
+          <!-- Term 1 -->
+          <article class="term-card is-current">
+            <div class="term-top">
+              <div class="term-tag-wrap">
+                <span class="term-number mono">TERM 01</span>
+                <span class="term-stage mono">&middot; Foundation</span>
+              </div>
+              <div class="term-meta-wrap">
+                <span class="roadmap-type-tag tag-skill">Skill</span>
+                <span class="term-status-badge badge-current mono">In Progress</span>
+              </div>
+            </div>
+            <div class="term-hero">
+              <div class="term-icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+              </div>
+              <div>
+                <h3>Foundation</h3>
+                <span class="term-focus-subtitle mono">Core Computing, AI/ML &amp; Civil Principles</span>
+              </div>
+            </div>
+            <ul class="term-points">
+              <li>Civil Engineering Fundamentals</li>
+              <li>Python &amp; Programming Fundamentals</li>
+              <li>AI &amp; Machine Learning Fundamentals</li>
+            </ul>
+            <div class="term-target-credential">
+              <div class="credential-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="credential-text">
+                <span class="credential-label mono">STAGE STATUS &middot; IN PROGRESS</span>
+                <span class="credential-name">Academic Foundation &middot; Computational &amp; Civil Engineering (LPU)</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Term 2 -->
+          <article class="term-card">
+            <div class="term-top">
+              <div class="term-tag-wrap">
+                <span class="term-number mono">TERM 02</span>
+                <span class="term-stage mono">&middot; AutoCAD</span>
+              </div>
+              <div class="term-meta-wrap">
+                <span class="roadmap-type-tag tag-skill">Skill</span>
+                <span class="roadmap-type-tag tag-cert">Certification</span>
+                <span class="term-status-badge badge-planned mono">Planned</span>
+              </div>
+            </div>
+            <div class="term-hero">
+              <div class="term-icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <div>
+                <h3>AutoCAD</h3>
+                <span class="term-focus-subtitle mono">2D Drafting &amp; Geometric Design</span>
+              </div>
+            </div>
+            <ul class="term-points">
+              <li>AutoCAD 2D Drafting &amp; Geometric Constructions</li>
+              <li>Civil Plans, Sections, Elevations &amp; Construction Documentation</li>
+              <li>Standard Layer Conventions &amp; CAD Workflows</li>
+            </ul>
+            <div class="term-target-credential">
+              <div class="credential-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5l4-2l4 2l-2-5"/><circle cx="12" cy="9" r="6"/></svg>
+              </div>
+              <div class="credential-text">
+                <span class="credential-label mono">TARGET CERTIFICATION &middot; PLANNED</span>
+                <span class="credential-name">Autodesk Certification (AutoCAD Certified Professional / User)</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Term 3 -->
+          <article class="term-card">
+            <div class="term-top">
+              <div class="term-tag-wrap">
+                <span class="term-number mono">TERM 03</span>
+                <span class="term-stage mono">&middot; BIM</span>
+              </div>
+              <div class="term-meta-wrap">
+                <span class="roadmap-type-tag tag-skill">Skill</span>
+                <span class="roadmap-type-tag tag-cert">Certification</span>
+                <span class="term-status-badge badge-planned mono">Planned</span>
+              </div>
+            </div>
+            <div class="term-hero">
+              <div class="term-icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/><path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/><path d="M14 9h1"/><path d="M14 13h1"/><path d="M14 17h1"/></svg>
+              </div>
+              <div>
+                <h3>BIM</h3>
+                <span class="term-focus-subtitle mono">Revit Architecture &amp; Spatial Modeling</span>
+              </div>
+            </div>
+            <ul class="term-points">
+              <li>Revit Architecture Parametric Modeling</li>
+              <li>Custom Families, Building Schedules &amp; Quantities</li>
+              <li>Coordinated Architectural BIM Documentation</li>
+            </ul>
+            <div class="term-target-credential">
+              <div class="credential-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5l4-2l4 2l-2-5"/><circle cx="12" cy="9" r="6"/></svg>
+              </div>
+              <div class="credential-text">
+                <span class="credential-label mono">TARGET CERTIFICATION &middot; PLANNED</span>
+                <span class="credential-name">Autodesk Certification (Revit for Architectural Design)</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Term 4 -->
+          <article class="term-card">
+            <div class="term-top">
+              <div class="term-tag-wrap">
+                <span class="term-number mono">TERM 04</span>
+                <span class="term-stage mono">&middot; Advanced BIM &amp; MEP</span>
+              </div>
+              <div class="term-meta-wrap">
+                <span class="roadmap-type-tag tag-skill">Skill</span>
+                <span class="roadmap-type-tag tag-cert">Certification</span>
+                <span class="term-status-badge badge-planned mono">Planned</span>
+              </div>
+            </div>
+            <div class="term-hero">
+              <div class="term-icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="10" y1="6.5" x2="14" y2="6.5"/><line x1="6.5" y1="10" x2="6.5" y2="14"/><line x1="10" y1="17.5" x2="14" y2="17.5"/><line x1="17.5" y1="10" x2="17.5" y2="14"/></svg>
+              </div>
+              <div>
+                <h3>Advanced BIM &amp; MEP</h3>
+                <span class="term-focus-subtitle mono">Structural BIM &amp; Building Services</span>
+              </div>
+            </div>
+            <ul class="term-points">
+              <li>Revit Structure: Foundations, Columns, Beams &amp; 3D Rebar Detailing</li>
+              <li>Mechanical, Electrical &amp; Plumbing (MEP) Coordination</li>
+              <li>Multidisciplinary Clash Detection &amp; Navisworks Collaboration</li>
+            </ul>
+            <div class="term-target-credential">
+              <div class="credential-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5l4-2l4 2l-2-5"/><circle cx="12" cy="9" r="6"/></svg>
+              </div>
+              <div class="credential-text">
+                <span class="credential-label mono">TARGET CERTIFICATION &middot; PLANNED</span>
+                <span class="credential-name">Autodesk Certification (Revit Structural &amp; MEP Design)</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Term 5 -->
+          <article class="term-card">
+            <div class="term-top">
+              <div class="term-tag-wrap">
+                <span class="term-number mono">TERM 05</span>
+                <span class="term-stage mono">&middot; Structural &amp; Training</span>
+              </div>
+              <div class="term-meta-wrap">
+                <span class="roadmap-type-tag tag-skill">Skill</span>
+                <span class="roadmap-type-tag tag-training">Training</span>
+                <span class="term-status-badge badge-planned mono">Planned</span>
+              </div>
+            </div>
+            <div class="term-hero">
+              <div class="term-icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 22 22 22 12 2"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="2" y1="22" x2="17" y2="12"/><line x1="22" y1="22" x2="7" y2="12"/></svg>
+              </div>
+              <div>
+                <h3>Structural Engineering &amp; Training</h3>
+                <span class="term-focus-subtitle mono">STAAD.Pro &amp; Summer Industrial Training</span>
+              </div>
+            </div>
+            <ul class="term-points">
+              <li>STAAD.Pro Finite Element Modeling &amp; Structural Analysis</li>
+              <li>Seismic, Dead, Live &amp; Wind Load Calculations</li>
+              <li>Summer Training in Structural Engineering &amp; BIM Workflows</li>
+            </ul>
+            <div class="term-target-companies">
+              <span class="target-companies-label mono">TARGET COMPANIES / PLATFORMS &middot; UPCOMING:</span>
+              <div class="target-companies-list">
+                <span class="company-pill">Bentley</span>
+                <span class="company-pill">Autodesk</span>
+                <span class="company-pill">AECOM</span>
+                <span class="company-pill">Afcons Infrastructure</span>
+                <span class="company-pill">Egis</span>
+                <span class="company-pill">BIMWorld</span>
+              </div>
+              <span class="companies-disclaimer mono">* Platforms &amp; companies of interest for planned industrial training</span>
+            </div>
+          </article>
+
+          <!-- Term 6 -->
+          <article class="term-card">
+            <div class="term-top">
+              <div class="term-tag-wrap">
+                <span class="term-number mono">TERM 06</span>
+                <span class="term-stage mono">&middot; PM &amp; Estimation</span>
+              </div>
+              <div class="term-meta-wrap">
+                <span class="roadmap-type-tag tag-skill">Skill</span>
+                <span class="roadmap-type-tag tag-cert">Certification</span>
+                <span class="term-status-badge badge-planned mono">Planned</span>
+              </div>
+            </div>
+            <div class="term-hero">
+              <div class="term-icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h4"/><path d="M8 18h8"/></svg>
+              </div>
+              <div>
+                <h3>Project Management &amp; Estimation</h3>
+                <span class="term-focus-subtitle mono">CPM Scheduling, Controls &amp; 5D BOQ</span>
+              </div>
+            </div>
+            <ul class="term-points">
+              <li>Microsoft Project (MSP) Construction Scheduling</li>
+              <li>Primavera P6 Enterprise Project Controls &amp; Critical Path Method</li>
+              <li>Quantity Takeoff &amp; Estimation (BOQ / Cost Planning)</li>
+            </ul>
+            <div class="term-target-companies">
+              <span class="target-companies-label mono">TARGET CERTIFICATIONS / PLATFORMS &middot; PLANNED:</span>
+              <div class="target-companies-list">
+                <span class="company-pill">Microsoft</span>
+                <span class="company-pill">Oracle</span>
+                <span class="company-pill">Autodesk</span>
+                <span class="company-pill">Forma</span>
+                <span class="company-pill">Precon</span>
+              </div>
+              <span class="companies-disclaimer mono">* Targeted credentials and platforms for planned project management mastery</span>
+            </div>
+          </article>
+
+          <!-- Term 7 -->
+          <article class="term-card">
+            <div class="term-top">
+              <div class="term-tag-wrap">
+                <span class="term-number mono">TERM 07</span>
+                <span class="term-stage mono">&middot; Field Internship</span>
+              </div>
+              <div class="term-meta-wrap">
+                <span class="roadmap-type-tag tag-internship">Internship</span>
+                <span class="term-status-badge badge-planned mono">Upcoming</span>
+              </div>
+            </div>
+            <div class="term-hero">
+              <div class="term-icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="m5 20 2-13h10l2 13"/><path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/><circle cx="12" cy="13" r="2"/></svg>
+              </div>
+              <div>
+                <h3>Industry Internship</h3>
+                <span class="term-focus-subtitle mono">On-Site Construction &amp; Engineering Experience</span>
+              </div>
+            </div>
+            <ul class="term-points">
+              <li>On-site Industry Internship &amp; Field Execution</li>
+              <li>Practical Construction &amp; Civil Engineering Experience</li>
+              <li>Applying BIM, Site QA/QC &amp; Structural Insights to Live Works</li>
+            </ul>
+            <div class="term-target-companies">
+              <span class="target-companies-label mono">TARGET COMPANIES &middot; COMPANIES OF INTEREST:</span>
+              <div class="target-companies-list">
+                <span class="company-pill">L&amp;T (Larsen &amp; Toubro)</span>
+                <span class="company-pill">AECOM</span>
+                <span class="company-pill">Afcons Infrastructure</span>
+                <span class="company-pill">Autodesk</span>
+                <span class="company-pill">Bentley</span>
+                <span class="company-pill">Egis</span>
+                <span class="company-pill">BIMWorld</span>
+              </div>
+              <span class="companies-disclaimer mono">* Target organizations of interest for planned on-site engineering internship</span>
+            </div>
+          </article>
+
+          <!-- Term 8 -->
+          <article class="term-card">
+            <div class="term-top">
+              <div class="term-tag-wrap">
+                <span class="term-number mono">TERM 08</span>
+                <span class="term-stage mono">&middot; Advanced Internship</span>
+              </div>
+              <div class="term-meta-wrap">
+                <span class="roadmap-type-tag tag-internship">Internship</span>
+                <span class="term-status-badge badge-milestone mono">Target Capstone</span>
+              </div>
+            </div>
+            <div class="term-hero">
+              <div class="term-icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/><circle cx="12" cy="10" r="3"/><path d="m14 12 4 4"/><path d="m10 12-4 4"/></svg>
+              </div>
+              <div>
+                <h3>Advanced Industry Internship</h3>
+                <span class="term-focus-subtitle mono">Advanced Construction Technology &amp; Project Experience</span>
+              </div>
+            </div>
+            <ul class="term-points">
+              <li>On-site Industry Internship &amp; Advanced ConTech Workflows</li>
+              <li>Advanced Construction Technology &amp; Multi-Discipline Integration</li>
+              <li>Deploying AI/ML, Data Analytics &amp; Smart Infrastructure Systems</li>
+            </ul>
+            <div class="term-target-companies">
+              <span class="target-companies-label mono">TARGET COMPANIES &middot; COMPANIES OF INTEREST:</span>
+              <div class="target-companies-list">
+                <span class="company-pill">L&amp;T (Larsen &amp; Toubro)</span>
+                <span class="company-pill">AECOM</span>
+                <span class="company-pill">Afcons Infrastructure</span>
+                <span class="company-pill">Autodesk</span>
+                <span class="company-pill">Bentley</span>
+                <span class="company-pill">Egis</span>
+                <span class="company-pill">BIMWorld</span>
+              </div>
+              <span class="companies-disclaimer mono">* Target organizations of interest for advanced construction technology experience</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Career Destination Banner -->
+        <div class="career-destination-card reveal">
+          <div class="destination-kicker mono">
+            <span class="status-dot" aria-hidden="true"></span>
+            CAREER GOAL &middot; TARGET CAREER
+          </div>
+          <h3 class="destination-title">AI &amp; Data Engineer in Construction Technology</h3>
+          <p class="destination-summary">
+            &ldquo;Combining Civil Engineering with Artificial Intelligence, Machine Learning, BIM, Data Analytics and Construction Technology to develop intelligent, data-driven solutions for the future of the AEC industry.&rdquo;
+          </p>
+
+          <div class="progression-chain-wrap">
+            <span class="formula-tag mono">CAREER PROGRESSION PATHWAY:</span>
+            <div class="progression-chain">
+              <span class="progression-node">Civil Engineering</span>
+              <span class="progression-arrow" aria-hidden="true">&rarr;</span>
+              <span class="progression-node">AutoCAD</span>
+              <span class="progression-arrow" aria-hidden="true">&rarr;</span>
+              <span class="progression-node">BIM / Revit</span>
+              <span class="progression-arrow" aria-hidden="true">&rarr;</span>
+              <span class="progression-node">Structural Engineering</span>
+              <span class="progression-arrow" aria-hidden="true">&rarr;</span>
+              <span class="progression-node">MEP</span>
+              <span class="progression-arrow" aria-hidden="true">&rarr;</span>
+              <span class="progression-node">AI / ML</span>
+              <span class="progression-arrow" aria-hidden="true">&rarr;</span>
+              <span class="progression-node">Data Analytics</span>
+              <span class="progression-arrow" aria-hidden="true">&rarr;</span>
+              <span class="progression-node">Construction Technology</span>
+              <span class="progression-arrow" aria-hidden="true">&rarr;</span>
+              <span class="progression-node">Project Management</span>
+              <span class="progression-arrow" aria-hidden="true">&rarr;</span>
+              <span class="progression-node is-goal">Industry Experience</span>
+            </div>
+          </div>
+
+          <div class="pillars-grid">
+            <div class="pillar-item">
+              <span class="pillar-num mono">01 &middot; Structural AI</span>
+              <h4>Predictive Digital Twins</h4>
+              <p>Harnessing sensor streams and machine learning models to forecast structural health, stress anomalies, and lifecycle maintenance before failure occurs.</p>
+            </div>
+            <div class="pillar-item">
+              <span class="pillar-num mono">02 &middot; Generative BIM</span>
+              <h4>Parametric Optimization</h4>
+              <p>Combining Revit, Dynamo &amp; Python algorithms to evaluate structural topologies that minimize material waste and carbon footprint.</p>
+            </div>
+            <div class="pillar-item">
+              <span class="pillar-num mono">03 &middot; Smart Construction</span>
+              <h4>4D/5D Intelligent Scheduling</h4>
+              <p>Integrating Primavera P6 and field data analytics to detect potential bottlenecks, forecast budget variations, and optimize on-site equipment allocation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section shell" id="journey">
+      <div class="journey reveal">
+        <div>
+          <div class="section-kicker mono">03 / The journey</div>
+          <h2>One step<br>at a time.</h2>
+        </div>
+        <div class="journey-detail">
+          <article class="journey-row">
+            <span class="journey-year mono">Present</span>
+            <div><h3>Integrated B.Tech in Civil Engineering, AI &amp; ML</h3><p>Lovely Professional University (LPU) &middot; Currently studying &amp; pursuing</p></div>
+          </article>
+          <article class="journey-row">
+            <span class="journey-year mono">In progress</span>
+            <div><h3>Growing the fundamentals</h3><p>Learning, asking better questions, and developing a hands-on understanding of AI and machine learning.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+        <section class="connect-section" id="contact">
+      <div class="shell">
+        <div class="connect-header reveal">
+          <div class="section-kicker mono">04 &middot; Opportunities &amp; Outreach</div>
+          <h2>Let&rsquo;s Connect.</h2>
+          <div class="connect-quote-banner">
+            <p>&ldquo;Open to professional opportunities, internships, collaborations, and conversations around AI, Civil Engineering, and Construction Technology.&rdquo;</p>
+          </div>
+        </div>
+
+        <div class="connect-profile-card reveal">
+          <div class="connect-profile-info">
+            <h3>Nasim Sha</h3>
+            <span class="connect-degree">B.Tech Integrated Civil Engineering | Artificial Intelligence &amp; Machine Learning &bull; Lovely Professional University (LPU)</span>
+            <div class="connect-focus-bar">
+              <span class="connect-focus-label mono">FOCUS:</span>
+              <div class="connect-focus-tags">
+                <span class="connect-focus-tag">AI &amp; Data Engineering</span>
+                <span class="connect-focus-tag">Construction Technology</span>
+                <span class="connect-focus-tag">BIM</span>
+                <span class="connect-focus-tag">Smart Infrastructure</span>
+                <span class="connect-focus-tag">Data-Driven Engineering</span>
+              </div>
+            </div>
+          </div>
+          <div class="connect-identity-pill">
+            <span class="identity-label mono">PROFESSIONAL IDENTITY</span>
+            <span class="identity-formula">Civil Engineering &times; AI/ML &times; Construction Technology</span>
+          </div>
+        </div>
+
+        <div class="profile-cards-grid reveal" role="list" aria-label="Professional profiles">
+          <!-- 01 - LinkedIn -->
+          <a class="profile-card" href="https://www.linkedin.com/in/nasim-sha-02a1733ba?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_ios" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="LinkedIn Profile">
+            <div class="profile-card-top">
+              <span class="card-num mono">01 &mdash; LINKEDIN</span>
+              <div class="card-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </div>
+            </div>
+            <div>
+              <h4>LinkedIn</h4>
+              <span class="card-subtitle mono">Professional Network</span>
+              <p class="card-desc">Connect with me professionally and follow my academic and career journey.</p>
+            </div>
+            <div class="card-btn">
+              <span>View LinkedIn</span>
+              <span class="card-btn-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </a>
+
+          <!-- 02 - GitHub -->
+          <a class="profile-card" href="https://github.com/sinannasim038-commits?tab=repositories" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="GitHub Repositories">
+            <div class="profile-card-top">
+              <span class="card-num mono">02 &mdash; GITHUB</span>
+              <div class="card-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </div>
+            </div>
+            <div>
+              <h4>GitHub</h4>
+              <span class="card-subtitle mono">Projects &amp; Code</span>
+              <p class="card-desc">Explore my coding projects, AI/ML experiments, engineering applications, and technical work.</p>
+            </div>
+            <div class="card-btn">
+              <span>View GitHub</span>
+              <span class="card-btn-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </a>
+
+          <!-- 03 - WhatsApp -->
+          <a class="profile-card" href="https://wa.me/qr/UC3IT2XPAEZEP1?s=r" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Direct WhatsApp Chat">
+            <div class="profile-card-top">
+              <span class="card-num mono">03 &mdash; WHATSAPP</span>
+              <div class="card-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              </div>
+            </div>
+            <div>
+              <h4>WhatsApp</h4>
+              <span class="card-subtitle mono">Direct Contact</span>
+              <p class="card-desc">Reach out to me directly for professional communication, opportunities, and collaboration.</p>
+            </div>
+            <div class="card-btn">
+              <span>Message on WhatsApp</span>
+              <span class="card-btn-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </a>
+
+          <!-- 04 - Instagram -->
+          <a class="profile-card" href="https://www.instagram.com/n_zeem/" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Instagram Profile">
+            <div class="profile-card-top">
+              <span class="card-num mono">04 &mdash; INSTAGRAM</span>
+              <div class="card-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </div>
+            </div>
+            <div>
+              <h4>Instagram</h4>
+              <span class="card-subtitle mono">Personal &amp; Creative</span>
+              <p class="card-desc">Follow my journey, interests, and creative side.</p>
+            </div>
+            <div class="card-btn">
+              <span>Follow on Instagram</span>
+              <span class="card-btn-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="connect-final-cta reveal">
+          <div class="final-cta-text">
+            <h3>Have an opportunity or an idea worth discussing?</h3>
+            <p>Open for discussions on AI engineering in construction, internships, and data-driven infrastructure.</p>
+          </div>
+          <a class="final-cta-button" href="https://wa.me/qr/UC3IT2XPAEZEP1?s=r" target="_blank" rel="noopener noreferrer">
+            <span>Let&rsquo;s Talk</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner shell mono">
+      <span><strong>Nasim Sha</strong> &middot; Civil Eng &times; AI &middot; LPU &middot; <a href="article.html" style="text-decoration: underline; color: inherit;">Read Article &rarr;</a></span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/nasim-sha-02a1733ba?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_ios" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/sinannasim038-commits?tab=repositories" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://wa.me/qr/UC3IT2XPAEZEP1?s=r" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="https://www.instagram.com/n_zeem/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+      <span>Made with curiosity &middot; <span id="year"></span></span>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
+      navLinks.classList.toggle('is-open', !isOpen);
+    });
+
+    navLinks.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        navLinks.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Open navigation');
+      }
+    });
+
+    document.querySelector('#year').textContent = new Date().getFullYear();
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+    } else {
+      document.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>
